@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
 import { TextField, Button, MenuItem, FormControl, InputLabel, Select } from '@mui/material';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-// import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-// import { AdapterDayjs } from '@mui/x-date-pickers-pro/AdapterDayjs';
-// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-// import { LocalizationProvider } from '@mui/x-date-pickers-pro/LocalizationProvider';
-
+import { DatePicker } from '@mui/x-date-pickers';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs'
+import dayjs from 'dayjs';
 
 const Signup = () => {
   const [formValues, setFormValues] = useState({
@@ -43,9 +39,10 @@ const Signup = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600 p-4">
-      <form className="bg-white p-6 rounded shadow-md w-full max-w-md" onSubmit={handleSubmit}>
+      <form className="bg-white p-6 rounded shadow-md w-full max-w-lg" onSubmit={handleSubmit}>
         <h2 className="text-4xl font-bold mb-6 text-center">Sign Up</h2>
-        <div className="mb-4">
+        <div className="mb-6">
+          {/* <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0'> */}
           <TextField
             label="First Name"
             name="firstName"
@@ -94,14 +91,15 @@ const Signup = () => {
             variant="outlined"
             margin="normal"
           />
-          {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
+            className=''
               label="Date of Birth"
               value={formValues.dateOfBirth}
               onChange={handleDateChange}
               renderInput={(params) => <TextField {...params} fullWidth variant="outlined" margin="normal" />}
             />
-          </LocalizationProvider> */}
+          </LocalizationProvider>
           <FormControl fullWidth variant="outlined" margin="normal">
             <InputLabel id="gender-label">Gender</InputLabel>
             <Select
